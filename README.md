@@ -1,31 +1,59 @@
 # Global Commodity Macro Analysis
 
-A compact macroeconomic research project using real-world data from FRED and the World Bank to study:
+A polished macroeconomic research project built with real-world data from **FRED** and the **World Bank** to analyze:
 
-- oil prices and inflation
-- commodity prices and GDP growth
+- **oil prices and inflation**
+- **commodity prices and GDP growth**
 
-The project is designed as a reproducible notebook-style analysis with a focus on economic interpretation, clear visuals, and policy-relevant framing.
+The repository combines a reproducible notebook workflow, exported figures, and a lightweight Streamlit dashboard designed to present the project as a concise research briefing.
 
-## Project Goal
+## Highlights
 
-This project asks two core macro questions:
+- Uses real macro and commodity datasets rather than toy data
+- Aligns daily, monthly, and quarterly time series in one workflow
+- Compares **headline vs core inflation** rather than treating inflation as one series
+- Adds **lag analysis** and **rolling correlation** to show time-varying relationships
+- Includes a simple **controlled regression** using the federal funds rate
+- Ships with a **dashboard showcase layer** for GitHub and portfolio presentation
+
+## Research Questions
+
+This project focuses on two core macro questions:
 
 1. How strongly are oil prices associated with inflation?
-2. Do broader commodity price cycles move with real GDP growth?
+2. Do broader commodity-price cycles move with real GDP growth?
 
-The analysis emphasizes:
+## Preview
 
-- time series alignment across daily, monthly, and quarterly data
-- inflation and growth feature engineering
-- correlation analysis
-- simple regression
-- lag effects
-- rolling relationships over time
+### Oil Prices vs Inflation
+
+![Oil Prices vs Inflation](outputs/figures/oil_vs_inflation_dual_axis.png)
+
+### Headline vs Core Inflation
+
+![Headline vs Core Inflation](outputs/figures/headline_vs_core_inflation.png)
+
+### Rolling Correlation
+
+![Rolling Correlation](outputs/figures/rolling_correlation_oil_inflation.png)
+
+### Commodity Prices vs GDP Growth
+
+![Commodity Prices vs GDP Growth](outputs/figures/commodity_vs_gdp_growth_timeseries.png)
+
+## Main Findings
+
+- Oil prices are more strongly associated with **headline inflation** than with **core inflation**
+- The oil-inflation relationship is **time-varying**, not constant over the sample
+- The strongest oil-headline relationship appears at a **short lag horizon**
+- The oil coefficient remains positive after controlling for the **federal funds rate**
+- Commodity growth and GDP growth remain **positively associated** in the quarterly sample
+
+These should be interpreted as **reduced-form empirical relationships**, not causal estimates.
 
 ## Data Sources
 
-The project uses publicly available macroeconomic datasets:
+The project uses:
 
 - FRED `DCOILWTICO`: WTI crude oil prices
 - FRED `CPIAUCSL`: headline CPI
@@ -34,15 +62,13 @@ The project uses publicly available macroeconomic datasets:
 - FRED `GDPC1`: real GDP
 - World Bank Pink Sheet: monthly commodity price indices
 
-## Main Analysis
+## Analysis Structure
 
 ### 1. Oil Prices vs Inflation
 
-The first section studies the relationship between oil prices and inflation using monthly data.
+This section includes:
 
-It includes:
-
-- monthly oil price aggregation
+- monthly oil-price aggregation
 - headline CPI year-over-year inflation
 - core CPI year-over-year inflation
 - oil vs headline inflation comparison
@@ -50,13 +76,11 @@ It includes:
 - lag analysis at 1, 3, and 6 months
 - 12-month rolling correlation
 - simple OLS regression
-- oil plus monetary-policy control regression
+- controlled regression with the federal funds rate
 
 ### 2. Commodity Prices vs GDP Growth
 
-The second section studies whether broad commodity price conditions move with real economic activity.
-
-It includes:
+This section includes:
 
 - extraction of the World Bank Total Commodity Index
 - monthly-to-quarterly aggregation
@@ -65,77 +89,67 @@ It includes:
 - correlation analysis
 - simple regression of GDP growth on commodity growth
 
-## Key Findings
+## Repository Layout
 
-In the current sample:
-
-- oil prices are more strongly associated with headline inflation than with core inflation
-- the oil-inflation relationship is positive and economically intuitive in simple regressions
-- the relationship is time-varying rather than constant over time
-- the oil coefficient remains positive after controlling for the federal funds rate
-- commodity growth and GDP growth are positively associated in the quarterly sample
-
-These findings should be interpreted as reduced-form empirical relationships rather than causal estimates.
-
-## Why This Project Matters
-
-This project is relevant for macroeconomic and commodity-market research roles because it demonstrates the ability to:
-
-- work with real-world macro and commodity datasets
-- clean and align multi-frequency time series
-- build interpretable economic features
-- present empirical results through tables and charts
-- connect quantitative results to macroeconomic intuition
-
-## Repository Structure
-
-- [outputs/notebooks/macro_analysis_notebook_style.py](/Users/wangzhuoran/Desktop/global-commodity-macro-analysis/outputs/notebooks/macro_analysis_notebook_style.py): main notebook-style analysis script
-- [outputs/figures](/Users/wangzhuoran/Desktop/global-commodity-macro-analysis/outputs/figures): exported charts
-- [data](/Users/wangzhuoran/Desktop/global-commodity-macro-analysis/data): local source datasets
-
-## How to Run
-
-Install the required packages:
-
-```bash
-pip install pandas numpy matplotlib statsmodels openpyxl
+```text
+commodity-macro-analysis/
+├── app.py
+├── data/
+├── outputs/
+│   ├── figures/
+│   └── notebooks/
+│       └── macro_analysis.ipynb
+├── requirements.txt
+└── README.md
 ```
 
-Run the notebook-style script:
+## Run Locally
+
+Install dependencies:
 
 ```bash
-python outputs/notebooks/macro_analysis_notebook_style.py
+pip install -r requirements.txt
 ```
 
-Run the project dashboard:
+Run the dashboard:
 
 ```bash
 streamlit run app.py
 ```
 
-Figures will be saved to:
+Open the notebook:
 
-```text
-outputs/figures/
+```bash
+jupyter notebook outputs/notebooks/macro_analysis.ipynb
 ```
 
-The dashboard presents the same project as a polished research briefing with:
+## Project Deliverables
 
-- a high-level workflow view
-- key empirical findings
-- figure-driven storytelling
-- a portfolio-friendly presentation layer
+- **Notebook analysis:** [`outputs/notebooks/macro_analysis.ipynb`](outputs/notebooks/macro_analysis.ipynb)
+- **Dashboard app:** [`app.py`](app.py)
+- **Exported figures:** [`outputs/figures`](outputs/figures)
+- **Application packaging notes:** [`outputs/project_packaging.md`](outputs/project_packaging.md)
 
-## Packaging Angle
+## Why This Project Matters
 
-If you are using this project in a job application, the strongest framing is:
+This project is strongest as a **macro research portfolio piece**. It demonstrates the ability to:
 
-- commodity-market analysis linked to macro outcomes
-- inflation pass-through from oil prices
-- comparison of headline and core inflation
-- time-varying macro relationships
-- clear, reproducible research workflow
+- work with public macroeconomic and commodity datasets
+- clean and align multi-frequency time series
+- engineer interpretable inflation and growth measures
+- present results through charts, summary tables, and a dashboard
+- connect empirical findings to macroeconomic intuition
 
-For ready-to-use resume bullets and interview framing, see:
+## Best Framing for Applications
 
-- [project_packaging.md](/Users/wangzhuoran/Desktop/global-commodity-macro-analysis/outputs/project_packaging.md)
+If you are using this repository in a job application, the strongest angle is:
+
+- **commodity-market analysis linked to macro outcomes**
+- **oil-inflation pass-through**
+- **headline vs core inflation comparison**
+- **time-varying macro relationships**
+- **clear, reproducible research workflow**
+
+For resume bullets, cover-letter wording, and interview talking points, see:
+
+- [`outputs/project_packaging.md`](outputs/project_packaging.md)
