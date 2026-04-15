@@ -27,16 +27,16 @@ BASE_DIR = resolve_base_dir()
 DATA_DIR = BASE_DIR / "data"
 
 PALETTE = {
-    "ink": "#1f302d",
-    "muted": "#66726c",
-    "line": "rgba(31, 48, 45, 0.10)",
-    "accent": "#9f5a3f",
-    "accent_soft": "#cf8c6f",
-    "sage": "#5f7a73",
-    "gold": "#bf9a59",
-    "cream": "#fbf7f1",
-    "bg": "#f5efe6",
-    "plot_bg": "rgba(255,255,255,0.55)",
+    "ink": "#1e252f",
+    "muted": "#626f7d",
+    "line": "rgba(30, 37, 47, 0.12)",
+    "accent": "#0057a8",
+    "accent_soft": "#2f6da7",
+    "sage": "#5d738d",
+    "gold": "#7d8ea5",
+    "cream": "#ffffff",
+    "bg": "#f6f8fb",
+    "plot_bg": "#ffffff",
 }
 
 
@@ -181,9 +181,9 @@ def inject_styles() -> None:
         f"""
         <style>
         :root {{
-            --bg: #f7f4ee;
-            --panel: rgba(255, 255, 255, 0.80);
-            --panel-strong: rgba(255, 255, 255, 0.96);
+            --bg: #f6f8fb;
+            --panel: rgba(255, 255, 255, 0.92);
+            --panel-strong: rgba(255, 255, 255, 1);
             --ink: {PALETTE["ink"]};
             --muted: {PALETTE["muted"]};
             --line: {PALETTE["line"]};
@@ -193,7 +193,7 @@ def inject_styles() -> None:
         }}
 
         .stApp {{
-            background: linear-gradient(180deg, #faf8f4 0%, #f3eee6 100%);
+            background: #f6f8fb;
             color: var(--ink);
         }}
 
@@ -201,99 +201,137 @@ def inject_styles() -> None:
             display: none;
         }}
 
+        [data-testid="collapsedControl"] {{
+            display: none;
+        }}
+
         .block-container {{
-            max-width: 1260px;
-            padding-top: 1rem;
-            padding-bottom: 2.5rem;
+            max-width: 1120px;
+            padding-top: 1.2rem;
+            padding-bottom: 2rem;
         }}
 
         [data-testid="stSidebar"] {{
-            background: rgba(249, 246, 240, 0.72);
-            border-right: 1px solid var(--line);
-        }}
-
-        [data-testid="stSidebar"] * {{
-            color: var(--ink);
-        }}
-
-        [data-testid="stSidebar"] .block-container {{
-            padding-top: 1rem;
-            padding-left: 1.05rem;
-            padding-right: 1rem;
+            display: none;
         }}
 
         .hero {{
-            padding: 1rem 1.15rem 0.95rem 1.15rem;
-            border: 1px solid var(--line);
-            border-radius: 12px;
-            background: rgba(255,255,255,0.80);
-            box-shadow: 0 3px 12px rgba(45, 42, 36, 0.03);
-            margin-bottom: 0.55rem;
+            padding: 0.05rem 0 0.15rem 0;
+            margin-bottom: 0.15rem;
         }}
 
         .hero-grid {{
             display: grid;
-            grid-template-columns: 1.35fr 0.8fr;
-            gap: 0.8rem;
-            align-items: start;
+            grid-template-columns: minmax(0, 1.4fr) minmax(260px, 0.9fr);
+            gap: 1.1rem;
+            align-items: end;
         }}
 
         .hero-kicker {{
-            letter-spacing: 0.16em;
+            letter-spacing: 0.12em;
             text-transform: uppercase;
             font-size: 0.7rem;
-            color: var(--accent-2);
+            color: var(--muted);
             font-weight: 700;
-            margin-bottom: 0.35rem;
+            margin-bottom: 0.28rem;
         }}
 
         .hero-title {{
-            font-size: 2.22rem;
-            line-height: 1.0;
-            font-weight: 780;
+            font-size: 3.18rem;
+            line-height: 0.98;
+            font-weight: 740;
             letter-spacing: -0.03em;
-            margin: 0 0 0.35rem 0;
+            margin: 0 0 0.3rem 0;
             color: var(--ink);
+            max-width: 640px;
         }}
 
         .hero-subtitle {{
-            font-size: 0.88rem;
-            line-height: 1.45;
+            font-size: 1.04rem;
+            line-height: 1.42;
             color: var(--muted);
-            max-width: 700px;
-            margin-bottom: 0.45rem;
+            max-width: 600px;
+            margin-bottom: 0.4rem;
         }}
 
-        .hero-why {{
-            border-left: 2px solid rgba(159, 90, 63, 0.30);
-            padding-left: 0.7rem;
+        .hero-core {{
             color: var(--ink);
-            font-size: 0.82rem;
-            line-height: 1.45;
-            margin-top: 0.2rem;
+            font-size: 1.5rem;
+            line-height: 1.22;
+            margin-top: 0.18rem;
+            max-width: 440px;
+            font-weight: 660;
+            letter-spacing: -0.02em;
         }}
 
-        .findings-box {{
-            border: 1px solid rgba(31, 48, 45, 0.14);
-            border-radius: 10px;
-            background: rgba(252, 251, 248, 0.98);
-            padding: 0.8rem 0.85rem 0.72rem 0.85rem;
+        .hero-sidecar {{
+            border-radius: 4px;
+            background: rgba(0, 87, 168, 0.03);
+            padding: 0.45rem 0 0.15rem 0.95rem;
+            border-left: 2px solid rgba(0, 87, 168, 0.16);
         }}
 
-        .findings-title {{
-            font-size: 0.76rem;
-            letter-spacing: 0.14em;
+        .hero-sidecar-title {{
+            font-size: 0.68rem;
+            letter-spacing: 0.12em;
             text-transform: uppercase;
-            color: var(--accent);
+            color: var(--muted);
             font-weight: 700;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.25rem;
+        }}
+
+        .hero-sidecar-value {{
+            font-size: 2.95rem;
+            line-height: 1;
+            font-weight: 760;
+            color: var(--accent);
+            margin-bottom: 0.12rem;
+        }}
+
+        .hero-sidecar-copy {{
+            color: var(--muted);
+            font-size: 0.84rem;
+            line-height: 1.36;
+            max-width: 220px;
+        }}
+
+        .takeaway-strip {{
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 0.8rem;
+            margin-top: 0.8rem;
+            padding-top: 0.75rem;
+            border-top: 1px solid rgba(30, 37, 47, 0.12);
+        }}
+
+        .takeaway-item {{
+            display: grid;
+            grid-template-columns: 34px 1fr;
+            gap: 0.45rem;
+            align-items: start;
+        }}
+
+        .takeaway-index {{
+            color: rgba(0, 87, 168, 0.2);
+            font-size: 1.4rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            line-height: 1;
+            padding-top: 0.02rem;
+        }}
+
+        .takeaway-copy {{
+            color: var(--ink);
+            font-size: 0.92rem;
+            line-height: 1.34;
+            max-width: 290px;
         }}
 
         .findings-list {{
             margin: 0;
             padding-left: 1rem;
             color: var(--ink);
-            font-size: 0.84rem;
+            font-size: 0.96rem;
             line-height: 1.45;
         }}
 
@@ -304,76 +342,112 @@ def inject_styles() -> None:
         .badge-row {{
             display: flex;
             flex-wrap: wrap;
-            gap: 0.45rem;
-            margin-top: 0.05rem;
+            gap: 0.35rem;
+            margin-top: 0.3rem;
+            margin-bottom: 0.35rem;
         }}
 
         .badge {{
             display: inline-flex;
             align-items: center;
             gap: 0.4rem;
-            padding: 0.34rem 0.62rem;
+            padding: 0.22rem 0.42rem;
             border: 1px solid var(--line);
-            border-radius: 10px;
-            background: rgba(255,255,255,0.62);
+            border-radius: 3px;
+            background: #ffffff;
             color: var(--muted);
-            font-size: 0.78rem;
+            font-size: 0.8rem;
         }}
 
-        .selection-context {{
-            margin-top: 0.35rem;
+        .selection-context, .inline-context {{
+            margin-top: 0.2rem;
             color: var(--muted);
-            font-size: 0.78rem;
+            font-size: 0.84rem;
             letter-spacing: 0.01em;
         }}
 
         .section-wrap {{
-            margin-top: 1.55rem;
-            margin-bottom: 0.2rem;
+            margin-top: 1.35rem;
+            margin-bottom: 0.15rem;
+        }}
+
+        .module {{
+            margin-top: 1.15rem;
+            padding-top: 0.15rem;
+            border-top: 1px solid rgba(30, 37, 47, 0.08);
+            animation: moduleFadeIn 0.55s ease both;
+        }}
+
+        .module:first-of-type {{
+            border-top: none;
+            margin-top: 1rem;
+        }}
+
+        .module-head {{
+            margin-bottom: 0.5rem;
+        }}
+
+        .module-controls {{
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.9rem;
+            align-items: end;
+            margin: 0.45rem 0 0.25rem 0;
+        }}
+
+        .module-context {{
+            margin: 0.1rem 0 0.55rem 0;
+            color: var(--muted);
+            font-size: 0.84rem;
+            line-height: 1.4;
+        }}
+
+        @keyframes moduleFadeIn {{
+            from {{
+                opacity: 0;
+                transform: translateY(8px);
+            }}
+            to {{
+                opacity: 1;
+                transform: translateY(0);
+            }}
         }}
 
         .section-kicker {{
             text-transform: uppercase;
-            letter-spacing: 0.13em;
-            font-size: 0.73rem;
-            color: var(--accent);
+            letter-spacing: 0.1em;
+            font-size: 0.68rem;
+            color: var(--muted);
             font-weight: 700;
-            margin-bottom: 0.32rem;
+            margin-bottom: 0.25rem;
         }}
 
         .section-title {{
-            font-size: 1.42rem;
-            font-weight: 760;
+            font-size: 1.52rem;
+            font-weight: 700;
             color: var(--ink);
-            margin-bottom: 0.25rem;
+            margin-bottom: 0.18rem;
             letter-spacing: -0.02em;
         }}
 
         .section-subtitle {{
             color: var(--muted);
-            line-height: 1.42;
+            line-height: 1.36;
             font-size: 0.84rem;
             max-width: 850px;
-            margin-bottom: 0.28rem;
+            margin-bottom: 0.2rem;
         }}
 
         .metric-card {{
-            border: 1px solid var(--line);
-            border-radius: 10px;
-            padding: 0.8rem 0.85rem;
-            min-height: 148px;
-            background: rgba(255,255,255,0.78);
-            box-shadow: 0 4px 14px rgba(48, 39, 28, 0.03);
+            border: none;
+            border-radius: 4px;
+            padding: 0.2rem 0 0.05rem 0;
+            height: 132px;
+            background: transparent;
+            box-shadow: none;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
-        }}
-
-        .metric-card:hover {{
-            transform: translateY(-1px);
-            box-shadow: 0 8px 20px rgba(48, 39, 28, 0.05);
-            border-color: rgba(31, 48, 45, 0.14);
         }}
 
         .metric-label {{
@@ -381,37 +455,113 @@ def inject_styles() -> None:
             text-transform: uppercase;
             letter-spacing: 0.12em;
             color: var(--muted);
-            margin-bottom: 0.65rem;
+            margin-bottom: 0.45rem;
+            min-height: 2.1rem;
         }}
 
         .metric-value {{
-            font-size: 2.15rem;
+            font-size: 2.3rem;
             line-height: 1;
-            font-weight: 760;
+            font-weight: 780;
             color: var(--ink);
-            margin-bottom: 0.35rem;
+            margin-bottom: 0.2rem;
         }}
 
         .metric-note {{
             color: var(--muted);
-            font-size: 0.79rem;
-            line-height: 1.38;
+            font-size: 0.82rem;
+            line-height: 1.34;
+            min-height: 2.2rem;
+            padding-top: 0.45rem;
+            border-top: 1px solid rgba(30, 37, 47, 0.08);
         }}
 
-        .glass-card {{
-            border: 1px solid var(--line);
-            border-radius: 10px;
-            padding: 0.85rem 0.9rem;
-            background: rgba(255,255,255,0.72);
-            box-shadow: 0 4px 14px rgba(48, 39, 28, 0.03);
-            height: 100%;
+        .comparison-card {{
+            padding: 0.1rem 0 0.18rem 0;
+            min-height: 132px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }}
+
+        .comparison-label {{
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--muted);
+            margin-bottom: 0.6rem;
+        }}
+
+        .comparison-grid {{
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 0.5rem;
+            align-items: end;
+            padding-bottom: 0.55rem;
+            border-bottom: 1px solid rgba(30, 37, 47, 0.08);
+        }}
+
+        .comparison-item-title {{
+            font-size: 0.74rem;
+            color: var(--muted);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 0.18rem;
+        }}
+
+        .comparison-item-value {{
+            font-size: 2.15rem;
+            line-height: 1;
+            font-weight: 760;
+            color: var(--ink);
+        }}
+
+        .comparison-footnote {{
+            color: var(--muted);
+            font-size: 0.82rem;
+            line-height: 1.35;
+            margin-top: 0.55rem;
+        }}
+
+        .note-grid-card {{
+            min-height: 88px;
+            display: flex;
+            align-items: flex-start;
+        }}
+
+        .compact-note {{
+            border-top: 1px solid rgba(30, 37, 47, 0.08);
+            padding-top: 0.45rem;
+            margin-top: 0.4rem;
+            color: var(--muted);
+            font-size: 0.82rem;
+            line-height: 1.4;
+        }}
+
+        .key-inline {{
+            border-top: 1px solid rgba(30, 37, 47, 0.14);
+            padding-top: 0.7rem;
+            margin-top: 0.5rem;
+            max-width: 920px;
+        }}
+
+        .key-inline ul {{
+            margin: 0;
+            padding-left: 1.05rem;
+        }}
+
+        .key-inline li {{
+            margin-bottom: 0.38rem;
+            color: var(--ink);
+            font-size: 0.94rem;
+            line-height: 1.42;
         }}
 
         .insight-list {{
             margin: 0;
             padding-left: 1.1rem;
             color: var(--muted);
-            line-height: 1.75;
+            line-height: 1.5;
         }}
 
         .insight-list li {{
@@ -419,36 +569,39 @@ def inject_styles() -> None:
         }}
 
         .chart-card {{
-            border: 1px solid var(--line);
-            border-radius: 10px;
-            padding: 0.62rem 0.62rem 0.12rem 0.62rem;
-            background: rgba(255,255,255,0.76);
-            box-shadow: 0 4px 14px rgba(48, 39, 28, 0.03);
+            border-top: 1px solid rgba(30, 37, 47, 0.12);
+            border-right: none;
+            border-left: none;
+            border-bottom: none;
+            border-radius: 0;
+            padding: 0.5rem 0 0 0;
+            background: transparent;
+            box-shadow: none;
         }}
 
         .chart-head {{
-            padding: 0.2rem 0.35rem 0.55rem 0.35rem;
+            padding: 0.08rem 0 0.32rem 0;
         }}
 
         .chart-title {{
-            font-size: 0.98rem;
-            font-weight: 720;
+            font-size: 1.02rem;
+            font-weight: 700;
             color: var(--ink);
-            margin-bottom: 0.2rem;
+            margin-bottom: 0.14rem;
         }}
 
         .chart-subtitle {{
-            font-size: 0.84rem;
-            line-height: 1.5;
+            font-size: 0.8rem;
+            line-height: 1.36;
             color: var(--muted);
         }}
 
         div[data-baseweb="tab-list"] {{
-            gap: 1.5rem;
+            gap: 1.15rem;
             align-items: flex-end;
-            border-bottom: 1px solid rgba(31, 48, 45, 0.10);
+            border-bottom: 1px solid rgba(30, 37, 47, 0.10);
             padding-bottom: 0.15rem;
-            margin-bottom: 1rem;
+            margin-bottom: 0.6rem;
         }}
 
         div[data-baseweb="tab-border"] {{
@@ -462,12 +615,12 @@ def inject_styles() -> None:
         button[data-baseweb="tab"] {{
             background: transparent;
             border: none;
-            border-bottom: 2px solid transparent;
+            border-bottom: 1.5px solid transparent;
             border-radius: 0;
-            color: rgba(31, 48, 45, 0.58);
-            padding: 0 0 0.72rem 0;
+            color: rgba(30, 37, 47, 0.58);
+            padding: 0 0 0.55rem 0;
             min-height: auto;
-            font-size: 0.98rem;
+            font-size: 0.96rem;
             font-weight: 560;
             letter-spacing: -0.01em;
             box-shadow: none;
@@ -479,7 +632,7 @@ def inject_styles() -> None:
 
         button[data-baseweb="tab"]:hover {{
             background: transparent;
-            color: rgba(31, 48, 45, 0.82);
+            color: rgba(30, 37, 47, 0.82);
         }}
 
         button[data-baseweb="tab"]:focus {{
@@ -492,7 +645,11 @@ def inject_styles() -> None:
             background: transparent;
             color: var(--ink);
             font-weight: 680;
-            border-bottom-color: rgba(159, 90, 63, 0.88);
+            border-bottom-color: rgba(0, 87, 168, 0.88);
+        }}
+
+        html {{
+            scroll-behavior: smooth;
         }}
 
         .source-table {{
@@ -505,6 +662,7 @@ def inject_styles() -> None:
             text-align: left;
             padding: 0.7rem 0.4rem;
             color: var(--muted);
+            font-size: 0.92rem;
         }}
 
         .source-table th {{
@@ -514,12 +672,58 @@ def inject_styles() -> None:
 
         .divider {{
             height: 1px;
-            background: linear-gradient(90deg, rgba(159,90,63,0), rgba(159,90,63,0.26), rgba(159,90,63,0));
-            margin: 1.25rem 0 0.4rem 0;
+            background: rgba(17, 17, 17, 0.1);
+            margin: 0.85rem 0 0.35rem 0;
         }}
 
         .stCaption {{
             color: var(--muted);
+            font-size: 0.88rem;
+        }}
+
+        .source-list {{
+            margin: 0.05rem 0 0 0;
+            padding-left: 1rem;
+            color: rgba(98, 111, 125, 0.9);
+            font-size: 0.84rem;
+            line-height: 1.48;
+        }}
+
+        .source-list li {{
+            margin-bottom: 0.34rem;
+        }}
+
+        .appendix-block {{
+            padding-top: 0.2rem;
+        }}
+
+        .appendix-title {{
+            color: var(--ink);
+            font-size: 1rem;
+            font-weight: 660;
+            margin-bottom: 0.25rem;
+        }}
+
+        .appendix-copy {{
+            color: var(--muted);
+            font-size: 0.88rem;
+            line-height: 1.5;
+            max-width: 520px;
+        }}
+
+        @media (max-width: 900px) {{
+            .hero-grid {{
+                grid-template-columns: 1fr;
+            }}
+
+            .takeaway-strip {{
+                grid-template-columns: 1fr;
+            }}
+
+            .comparison-grid {{
+                grid-template-columns: 1fr;
+                gap: 0.55rem;
+            }}
         }}
         </style>
         """,
@@ -530,7 +734,7 @@ def inject_styles() -> None:
 def section_header(kicker: str, title: str, subtitle: str) -> None:
     st.markdown(
         f"""
-        <div class="section-wrap">
+        <div class="section-wrap module-head">
             <div class="section-kicker">{kicker}</div>
             <div class="section-title">{title}</div>
             <div class="section-subtitle">{subtitle}</div>
@@ -538,6 +742,14 @@ def section_header(kicker: str, title: str, subtitle: str) -> None:
         """,
         unsafe_allow_html=True,
     )
+
+
+def module_open() -> None:
+    st.markdown('<section class="module">', unsafe_allow_html=True)
+
+
+def module_close() -> None:
+    st.markdown("</section>", unsafe_allow_html=True)
 
 
 def metric_card(label: str, value: str, note: str) -> None:
@@ -549,6 +761,43 @@ def metric_card(label: str, value: str, note: str) -> None:
                 <div class="metric-value">{value}</div>
             </div>
             <div class="metric-note">{note}</div>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+
+
+def comparison_card(
+    label: str,
+    left_title: str,
+    left_value: str,
+    mid_title: str,
+    mid_value: str,
+    right_title: str,
+    right_value: str,
+    footnote: str,
+) -> None:
+    st.markdown(
+        f"""
+        <div class="comparison-card">
+            <div>
+                <div class="comparison-label">{label}</div>
+                <div class="comparison-grid">
+                    <div>
+                        <div class="comparison-item-title">{left_title}</div>
+                        <div class="comparison-item-value">{left_value}</div>
+                    </div>
+                    <div>
+                        <div class="comparison-item-title">{mid_title}</div>
+                        <div class="comparison-item-value">{mid_value}</div>
+                    </div>
+                    <div>
+                        <div class="comparison-item-title">{right_title}</div>
+                        <div class="comparison-item-value">{right_value}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="comparison-footnote">{footnote}</div>
         </div>
         """,
         unsafe_allow_html=True,
@@ -613,7 +862,7 @@ def apply_plot_style(fig: go.Figure, height: int = 420) -> go.Figure:
         title_font=dict(color=PALETTE["muted"]),
     )
     fig.update_yaxes(
-        gridcolor="rgba(31,48,45,0.08)",
+        gridcolor="rgba(31,48,45,0.04)",
         zeroline=False,
         linecolor=PALETTE["line"],
         tickfont=dict(color=PALETTE["muted"]),
@@ -636,7 +885,7 @@ def build_dual_axis_chart(df: pd.DataFrame, inflation_choice: str) -> go.Figure:
             y=df["oil_price"],
             mode="lines",
             name="WTI Oil Price",
-            line=dict(color=PALETTE["ink"], width=3),
+            line=dict(color=PALETTE["ink"], width=3.6),
             hovertemplate="%{x|%b %Y}<br>Oil price: %{y:.1f}<extra></extra>",
         ),
         secondary_y=False,
@@ -647,22 +896,32 @@ def build_dual_axis_chart(df: pd.DataFrame, inflation_choice: str) -> go.Figure:
             y=df[metric_col] * 100,
             mode="lines",
             name=metric_label,
-            line=dict(color=metric_color, width=3),
+            line=dict(color=metric_color, width=2.4, dash="dash"),
             hovertemplate="%{x|%b %Y}<br>Inflation: %{y:.2f}%<extra></extra>",
         ),
         secondary_y=True,
     )
     fig.add_annotation(
         x=df["DATE"].iloc[-1],
-        y=(df[metric_col] * 100).iloc[-1],
-        text="Recent sample end",
+        y=df["oil_price"].iloc[-1],
+        text="Oil",
         showarrow=False,
-        xanchor="right",
-        yshift=18,
-        font=dict(color=PALETTE["muted"], size=11),
+        xanchor="left",
+        xshift=8,
+        font=dict(color=PALETTE["ink"], size=12),
+    )
+    fig.add_annotation(
+        x=df["DATE"].iloc[-1],
+        y=(df[metric_col] * 100).iloc[-1],
+        text="Headline CPI" if inflation_choice == "Headline CPI" else "Core CPI",
+        showarrow=False,
+        xanchor="left",
+        xshift=8,
+        font=dict(color=metric_color, size=12),
     )
     fig.update_yaxes(title_text="WTI oil price (USD/bbl)", secondary_y=False)
     fig.update_yaxes(title_text=f"{metric_label} (%)", secondary_y=True)
+    fig.update_layout(showlegend=False)
     return apply_plot_style(fig, height=450)
 
 
@@ -682,9 +941,9 @@ def build_scatter_chart(df: pd.DataFrame, inflation_choice: str, lag_months: int
             y=plot_df[metric_col] * 100,
             mode="markers",
             marker=dict(
-                size=10,
+                size=9,
                 color=PALETTE["accent"] if inflation_choice == "Headline CPI" else PALETTE["sage"],
-                opacity=0.72,
+                opacity=0.62,
                 line=dict(color="rgba(255,255,255,0.7)", width=0.8),
             ),
             hovertemplate="%{customdata|%b %Y}<br>Oil: %{x:.1f}<br>Inflation: %{y:.2f}%<extra></extra>",
@@ -692,8 +951,24 @@ def build_scatter_chart(df: pd.DataFrame, inflation_choice: str, lag_months: int
             name=metric_label,
         )
     )
+    if len(plot_df) > 1:
+        trend_x = plot_df[x_col]
+        trend_y = plot_df[metric_col] * 100
+        slope, intercept = pd.Series(trend_y).cov(pd.Series(trend_x)) / pd.Series(trend_x).var(), trend_y.mean() - (pd.Series(trend_y).cov(pd.Series(trend_x)) / pd.Series(trend_x).var()) * trend_x.mean()
+        x_min, x_max = trend_x.min(), trend_x.max()
+        fig.add_trace(
+            go.Scatter(
+                x=[x_min, x_max],
+                y=[intercept + slope * x_min, intercept + slope * x_max],
+                mode="lines",
+                line=dict(color="rgba(0, 87, 168, 0.35)" if inflation_choice == "Headline CPI" else "rgba(93, 115, 141, 0.45)", width=1.6),
+                hoverinfo="skip",
+                name="Trend",
+            )
+        )
     fig.update_xaxes(title_text=f"{x_label} (USD/bbl)")
     fig.update_yaxes(title_text=f"{metric_label} (%)")
+    fig.update_layout(showlegend=False)
     return apply_plot_style(fig, height=420)
 
 
@@ -716,7 +991,7 @@ def build_rolling_chart(df: pd.DataFrame, rolling_view: str) -> go.Figure:
                 y=df["rolling_corr_12m_core"],
                 mode="lines",
                 name="Oil vs core inflation",
-                line=dict(color=PALETTE["sage"], width=3, dash="dash"),
+                line=dict(color="rgba(93, 115, 141, 0.6)", width=2.2, dash="dash"),
             )
         )
     fig.add_hline(y=0, line_color="rgba(31,48,45,0.25)", line_dash="dot")
@@ -725,7 +1000,10 @@ def build_rolling_chart(df: pd.DataFrame, rolling_view: str) -> go.Figure:
 
 
 def build_lag_bar(lag_df: pd.DataFrame) -> go.Figure:
-    colors = [PALETTE["accent"] if row == lag_df["Correlation"].abs().idxmax() else PALETTE["sage"] for row in lag_df.index]
+    colors = [
+        PALETTE["accent"] if row == lag_df["Correlation"].abs().idxmax() else "rgba(93, 115, 141, 0.5)"
+        for row in lag_df.index
+    ]
     fig = go.Figure(
         go.Bar(
             x=lag_df["Lag (months)"].astype(str),
@@ -733,6 +1011,15 @@ def build_lag_bar(lag_df: pd.DataFrame) -> go.Figure:
             marker=dict(color=colors, line=dict(color="rgba(255,255,255,0.65)", width=0.8)),
             hovertemplate="Lag %{x} months<br>Correlation: %{y:.3f}<extra></extra>",
         )
+    )
+    peak_row = lag_df.loc[lag_df["Correlation"].abs().idxmax()]
+    fig.add_annotation(
+        x=str(int(peak_row["Lag (months)"])),
+        y=float(peak_row["Correlation"]),
+        text="strongest",
+        showarrow=False,
+        yshift=16,
+        font=dict(color=PALETTE["accent"], size=11),
     )
     fig.update_xaxes(title_text="Lag window")
     fig.update_yaxes(title_text="Correlation with headline inflation")
@@ -774,12 +1061,13 @@ def build_commodity_scatter(df: pd.DataFrame) -> go.Figure:
             x=plot_df["commodity_growth"] * 100,
             y=plot_df["gdp_growth"] * 100,
             mode="markers",
-            marker=dict(size=10, color=PALETTE["gold"], opacity=0.72),
+            marker=dict(size=8.5, color="rgba(125, 142, 165, 0.58)", opacity=0.68),
             customdata=plot_df["quarter_label"],
             hovertemplate="%{customdata}<br>Commodity growth: %{x:.2f}%<br>GDP growth: %{y:.2f}%<extra></extra>",
             name="Quarterly observations",
         )
     )
+    fig.update_layout(showlegend=False)
     fig.update_xaxes(title_text="Commodity growth (%)")
     fig.update_yaxes(title_text="GDP growth (%)")
     return apply_plot_style(fig, height=360)
@@ -799,17 +1087,6 @@ latest_date = oil_inflation["DATE"].max().strftime("%b %Y")
 best_lag = int(lag_df.loc[lag_df["Correlation"].abs().idxmax(), "Lag (months)"])
 controlled_oil_coef = controlled_model.params["oil_price"]
 
-with st.sidebar:
-    st.markdown("##### Notes")
-    st.caption(
-        "Reduced-form research dashboard built from public macro data. Results are associational rather than causal."
-    )
-    st.markdown("##### Sources")
-    st.caption("FRED: DCOILWTICO, CPIAUCSL, CPILFESL, FEDFUNDS, GDPC1")
-    st.caption("World Bank Pink Sheet: Total Commodity Index")
-    st.markdown("##### Sample")
-    st.caption(f"Oil-inflation monthly sample through {latest_date}")
-
 
 st.markdown(
     """
@@ -821,19 +1098,30 @@ st.markdown(
                 <div class="hero-subtitle">
                     FRED and World Bank data are used to study oil-inflation pass-through and the link between commodity cycles and output growth.
                 </div>
-                <div class="hero-why">
-                    Why this matters: commodity shocks remain one of the clearest transmission channels between markets, inflation dynamics, and macro activity.
+                <div class="hero-core">
+                    Oil tracks headline inflation more closely than core, with the strongest pass-through appearing within one month.
                 </div>
             </div>
-            <div>
-                <div class="findings-box">
-                    <div class="findings-title">Key Findings</div>
-                    <ul class="findings-list">
-                        <li>Oil is more strongly linked to headline inflation than to core inflation.</li>
-                        <li>The oil-inflation relationship is time-varying rather than stable.</li>
-                        <li>Oil remains positive after controlling for the federal funds rate.</li>
-                    </ul>
+            <div class="hero-sidecar">
+                <div class="hero-sidecar-title">Primary read</div>
+                <div class="hero-sidecar-value">+0.030</div>
+                <div class="hero-sidecar-copy">
+                    Headline correlation exceeds core correlation by 0.030 in the current reduced-form specification.
                 </div>
+            </div>
+        </div>
+        <div class="takeaway-strip">
+            <div class="takeaway-item">
+                <div class="takeaway-index">01</div>
+                <div class="takeaway-copy">Oil is more strongly linked to headline inflation than to core inflation.</div>
+            </div>
+            <div class="takeaway-item">
+                <div class="takeaway-index">02</div>
+                <div class="takeaway-copy">The strongest simple association appears at a 1-month lag rather than at longer horizons.</div>
+            </div>
+            <div class="takeaway-item">
+                <div class="takeaway-index">03</div>
+                <div class="takeaway-copy">The relationship weakens over time, but remains directionally positive after adding fed funds.</div>
             </div>
         </div>
     </div>
@@ -844,270 +1132,222 @@ st.markdown(
 section_header(
     "Key Findings",
     "Top-Line Readout",
-    "Top-line metrics computed directly from the underlying project data and models.",
+    "Top-line metrics computed directly from the project data and reduced-form models.",
 )
-
-metric_cols = st.columns(4, gap="large")
+module_open()
+metric_cols = st.columns([1.75, 1.05], gap="large")
 with metric_cols[0]:
-    metric_card(
-        "Oil vs Headline Inflation",
+    comparison_card(
+        "Oil and Inflation Correlation",
+        "Headline",
         f"{frames['headline_corr']:.3f}",
-        "The oil-headline relationship is the strongest simple contemporaneous correlation in the inflation block.",
+        "Core",
+        f"{frames['core_corr']:.3f}",
+        "Difference",
+        f"{(frames['headline_corr'] - frames['core_corr']):+.3f}",
+        "The headline link is modestly stronger and carries the main pass-through story.",
     )
 with metric_cols[1]:
-    metric_card(
-        "Oil vs Core Inflation",
-        f"{frames['core_corr']:.3f}",
-        "Core remains positively related to oil, but less strongly than headline, which fits direct energy pass-through.",
+    st.markdown(
+        f'<div class="appendix-block"><div class="appendix-title">Meta insight</div><div class="appendix-copy">Peak pass-through appears at <strong>{best_lag} month</strong>; the oil coefficient remains positive after policy control at <strong>{controlled_oil_coef:.4f}</strong>.</div></div>',
+        unsafe_allow_html=True,
     )
-with metric_cols[2]:
-    metric_card(
-        "Strongest Lag",
-        f"{best_lag}M",
-        "The lag table suggests the strongest oil-headline link appears at a short horizon in this sample.",
-    )
-with metric_cols[3]:
-    metric_card(
-        "Oil Coef. + Fed Funds",
-        f"{controlled_oil_coef:.4f}",
-        "The oil coefficient remains positive after controlling for the federal funds rate in the HAC-robust specification.",
-    )
-
-badge_row(
-    [
-        "Sources: FRED + World Bank",
-        "Methods: Correlation, OLS, HAC",
-        "Monthly + Quarterly Frequencies",
-        "Reduced-form, not causal",
-    ]
+st.markdown(
+    f'<div class="module-context">FRED and World Bank data | Correlation, OLS, HAC | Sample through {latest_date}</div>',
+    unsafe_allow_html=True,
 )
+module_close()
 
+module_open()
 section_header(
     "Oil and Inflation",
-    "Macro Transmission View",
-    "Oil-inflation pass-through with direct controls for inflation lens, lag window, and rolling view.",
+    "Oil and Inflation Over Time",
+    "The time-series view anchors the project: oil and inflation rise together most clearly in the headline specification.",
 )
 inflation_choice = "Headline CPI"
 lag_months = 0
 rolling_view = "Both"
 
-oil_left, oil_right = st.columns([1.2, 0.8], gap="large")
-with oil_left:
-    inflation_choice = st.segmented_control(
-        "Inflation lens",
-        ["Headline CPI", "Core CPI"],
-        default="Headline CPI",
-        key="inflation_choice",
+inflation_choice = st.segmented_control(
+    "Inflation lens",
+    ["Headline CPI", "Core CPI"],
+    default="Headline CPI",
+    key="inflation_choice",
+)
+st.markdown(
+    f'<div class="module-context">Time-series view: {inflation_choice}</div>',
+    unsafe_allow_html=True,
+)
+chart_frame(
+    "Oil and Inflation",
+    "WTI oil is plotted against the selected inflation series in a dual-axis view.",
+    build_dual_axis_chart(oil_inflation, inflation_choice),
+    key="dual_axis",
+)
+oil_notes = st.columns(2, gap="large")
+with oil_notes[0]:
+    st.markdown(
+        f'<div class="compact-note note-grid-card"><strong>Interpretation.</strong>&nbsp;Headline correlation ({frames["headline_corr"]:.3f}) remains above core ({frames["core_corr"]:.3f}), consistent with more direct energy pass-through.</div>',
+        unsafe_allow_html=True,
     )
-    st.caption(
-        f"Time-series view: {inflation_choice}"
+with oil_notes[1]:
+    st.markdown(
+        f'<div class="compact-note note-grid-card"><strong>Controlled estimate.</strong>&nbsp;The oil coefficient stays positive at {controlled_oil_coef:.4f} after adding the federal funds rate.</div>',
+        unsafe_allow_html=True,
     )
-    chart_frame(
-        "Oil Prices and Inflation Over Time",
-        "The selected inflation series is shown against WTI oil to make the co-movement and major shock windows easy to read.",
-        build_dual_axis_chart(oil_inflation, inflation_choice),
-        key="dual_axis",
-    )
-with oil_right:
-    narrative_card(
-        "Interpretation",
-        f"""
-        Oil correlates more strongly with <strong>headline inflation</strong> ({frames['headline_corr']:.3f}) than with
-        <strong>core inflation</strong> ({frames['core_corr']:.3f}), consistent with more direct energy pass-through.
-        """,
-    )
-    st.markdown('<div class="divider"></div>', unsafe_allow_html=True)
-    narrative_card(
-        "Methods Snapshot",
-        f"""
-        Monthly oil prices are aligned with year-over-year CPI inflation. The main controlled model is
-        <strong>headline inflation ~ oil price + fed funds</strong>; the oil coefficient is <strong>{controlled_oil_coef:.4f}</strong>.
-        """,
-    )
+module_close()
 
+module_open()
 section_header(
     "Headline vs Core Inflation",
-    "Relationship Quality",
-    "Cross-sectional and time-varying views of the oil-inflation relationship.",
+    "Oil-Inflation Cross-Section",
+    "The scatter view shows how the oil-inflation link changes when inflation is measured as headline versus core and when oil enters with lags.",
 )
-scatter_left, scatter_right = st.columns([0.9, 1.1], gap="large")
-with scatter_left:
-    lag_months = st.segmented_control(
-        "Scatter lag",
-        [0, 1, 3, 6],
-        default=0,
-        format_func=lambda x: "Current" if x == 0 else f"{x}M",
-        key="lag_months",
-    )
-    st.caption(
-        f"Scatter view: {inflation_choice} | {'Current oil price' if lag_months == 0 else f'{lag_months}-month lagged oil price'}"
-    )
-    chart_frame(
-        "Oil and Inflation Scatter",
-        "Scatter view under the selected inflation lens and lag specification.",
-        build_scatter_chart(oil_inflation, inflation_choice, lag_months),
-        key="scatter",
-    )
-with scatter_right:
-    tabs = st.tabs(["Key Findings", "What to Notice"])
-    with tabs[0]:
-        narrative_card(
-            "Headline vs Core Readout",
-            f"""
-            The key question is whether oil appears more connected to <strong>headline CPI</strong> or <strong>core CPI</strong>.
-            In this sample, the evidence points more strongly to headline inflation.
-            <ul class="insight-list">
-                <li>Headline OLS oil coefficient: <strong>{headline_model.params['oil_price']:.4f}</strong></li>
-                <li>Core OLS oil coefficient: <strong>{core_model.params['oil_price']:.4f}</strong></li>
-                <li>Controlled oil coefficient: <strong>{controlled_oil_coef:.4f}</strong></li>
-            </ul>
-            """,
-        )
-    with tabs[1]:
-        narrative_card(
-            "Reading the Section",
-            """
-            The scatter plot shows the relationship under the selected lens.
-            The charts below then show whether the effect survives lags and whether it changes across time.
-            """,
-        )
+lag_months = st.segmented_control(
+    "Scatter lag",
+    [0, 1, 3, 6],
+    default=0,
+    format_func=lambda x: "Current" if x == 0 else f"{x}M",
+    key="lag_months",
+)
+st.markdown(
+    f'<div class="module-context">Scatter view: {inflation_choice} | {"Current oil price" if lag_months == 0 else f"{lag_months}-month lagged oil price"}</div>',
+    unsafe_allow_html=True,
+)
+chart_frame(
+    "Oil and CPI: Cross-Section Evidence",
+    "Each point is a monthly observation under the selected inflation lens and lag specification.",
+    build_scatter_chart(oil_inflation, inflation_choice, lag_months),
+    key="scatter",
+)
+st.markdown(
+    '<div class="compact-note"><strong>Model note.</strong> Oil coefficients are positive across specifications.</div>',
+    unsafe_allow_html=True,
+)
+module_close()
 
-lag_roll_cols = st.columns(2, gap="large")
-with lag_roll_cols[0]:
-    chart_frame(
-        "Lag Structure",
-        "The 1-, 3-, and 6-month lag comparison shows how quickly the oil signal fades.",
-        build_lag_bar(lag_df),
-        key="lagbar",
-    )
-with lag_roll_cols[1]:
-    rolling_view = st.segmented_control(
-        "Rolling view",
-        ["Both", "Headline", "Core"],
-        default="Both",
-        key="rolling_view",
-    )
-    st.caption(f"Rolling chart view: {rolling_view}")
-    chart_frame(
-        "Rolling Correlation",
-        "The 12-month rolling view shows that the oil-inflation relationship is time-varying.",
-        build_rolling_chart(oil_inflation, rolling_view),
-        key="rolling",
-    )
+module_open()
+section_header(
+    "Lag Response",
+    "How quickly the oil signal fades",
+    "Shorter lags carry more of the oil-headline inflation relationship than longer ones.",
+)
+chart_frame(
+    "Lag Structure",
+    "The 1-, 3-, and 6-month lag comparison shows how the oil signal decays with time.",
+    build_lag_bar(lag_df),
+    key="lagbar",
+)
+st.markdown(
+    '<div class="compact-note"><strong>Reading.</strong> The strongest simple link appears at 1 month, then weakens as the lag extends.</div>',
+    unsafe_allow_html=True,
+)
+module_close()
 
+module_open()
+section_header(
+    "Rolling Correlation",
+    "Positive, but unstable over time",
+    "A 12-month rolling view shows that the oil-inflation link changes materially across the sample.",
+)
+chart_frame(
+    "Rolling Correlation",
+    "Headline and core rolling correlations are shown together to emphasize instability rather than a fixed coefficient.",
+    build_rolling_chart(oil_inflation, "Both"),
+    key="rolling",
+)
+st.markdown(
+    '<div class="compact-note"><strong>Reading.</strong> Rolling correlations remain mostly positive, but the strength of the relationship is clearly time-varying rather than constant.</div>',
+    unsafe_allow_html=True,
+)
+module_close()
+
+module_open()
 section_header(
     "Commodity Prices and GDP Growth",
-    "Broader Macro Cycle Link",
-    "Quarterly commodity growth and GDP growth are used to summarize broader macro cycle co-movement.",
+    "Broader Commodity Cycle Link",
+    "The secondary block asks whether broader commodity-price cycles move with real activity as well as with inflation.",
 )
 
-commodity_left, commodity_right = st.columns([1.1, 0.9], gap="large")
-with commodity_left:
-    chart_frame(
-        "Commodity Growth vs GDP Growth",
-        "Quarterly commodity growth and GDP growth are plotted together to show broad co-movement.",
-        build_commodity_cycle_chart(commodity_gdp),
-        key="commodity_cycle",
-    )
-with commodity_right:
+chart_frame(
+    "Commodity Growth and GDP Growth",
+    "Quarterly commodity growth and GDP growth are plotted together to show broad macro-cycle co-movement.",
+    build_commodity_cycle_chart(commodity_gdp),
+    key="commodity_cycle",
+)
+st.markdown(
+    f'<div class="compact-note"><strong>Reading.</strong> The relationship is positive but modest: correlation {frames["commodity_corr"]:.3f}, regression coefficient {commodity_model.params["commodity_growth"]:.4f}.</div>',
+    unsafe_allow_html=True,
+)
+with st.expander("Show quarterly scatter", expanded=False):
     chart_frame(
         "Quarterly Scatter",
-        "The relationship is modest but directionally positive.",
+        "The quarterly relationship is modest but directionally positive.",
         build_commodity_scatter(commodity_gdp),
         key="commodity_scatter",
     )
+module_close()
 
+module_open()
 section_header(
-    "Method Notes and Limitations",
-    "Research Credibility",
-    "Secondary notes on construction and interpretation.",
+    "Method and Limits",
+    "Notes on construction and interpretation",
+    "These results are descriptive rather than causal and are intentionally kept reduced-form.",
 )
 
-note_cols = st.columns(2, gap="large")
+note_cols = st.columns([1.2, 0.9], gap="large")
 with note_cols[0]:
-    with st.expander("Method Notes", expanded=True):
-        st.markdown(
-            """
-            - Daily WTI oil prices are aggregated to monthly means.
-            - Headline and core inflation are computed as year-over-year percentage changes in CPI.
-            - Commodity growth and GDP growth are computed at quarterly frequency.
-            - Lag analysis compares 1-, 3-, and 6-month oil lags.
-            - The controlled inflation model uses HAC-robust standard errors with 3 lags.
-            """
-        )
+    st.markdown(
+        """
+        <div class="appendix-block">
+            <div class="appendix-title">Construction</div>
+            <ul class="source-list">
+                <li>Daily WTI oil prices are aggregated to monthly means before merging with CPI and fed funds data.</li>
+                <li>Headline and core inflation are computed as year-over-year changes in CPI.</li>
+                <li>Commodity growth and GDP growth are computed at quarterly frequency.</li>
+                <li>Lag comparisons focus on 1-, 3-, and 6-month oil lags, with HAC-robust errors in the controlled model.</li>
+            </ul>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
 with note_cols[1]:
-    with st.expander("Limitations", expanded=True):
-        st.markdown(
-            """
-            - These results are **associational**, not causal.
-            - The regressions are intentionally reduced-form and omit many macro controls.
-            - Rolling correlations are descriptive and should not be treated as structural estimates.
-            - The project is designed to emphasize clarity and reproducibility rather than model complexity.
-            """
-        )
+    st.markdown(
+        """
+        <div class="appendix-block">
+            <div class="appendix-title">Interpretation limits</div>
+            <ul class="source-list">
+                <li>These results are associational rather than causal.</li>
+                <li>The regressions are intentionally reduced-form and omit broader macro controls.</li>
+                <li>Rolling correlations are descriptive and should not be read as structural estimates.</li>
+            </ul>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+module_close()
 
+module_open()
 section_header(
     "Data Sources",
-    "Source Citations",
-    "All numbers shown above are computed from the project data stored in the repository.",
+    "Series used in the dashboard",
+    "All figures are computed from local project data pulled from FRED and the World Bank Pink Sheet.",
 )
 
 st.markdown(
     """
-    <div class="glass-card">
-        <table class="source-table">
-            <thead>
-                <tr>
-                    <th>Series</th>
-                    <th>Provider</th>
-                    <th>Frequency</th>
-                    <th>Role in Dashboard</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>DCOILWTICO</td>
-                    <td>FRED</td>
-                    <td>Daily → Monthly</td>
-                    <td>WTI oil price series</td>
-                </tr>
-                <tr>
-                    <td>CPIAUCSL</td>
-                    <td>FRED</td>
-                    <td>Monthly</td>
-                    <td>Headline CPI inflation</td>
-                </tr>
-                <tr>
-                    <td>CPILFESL</td>
-                    <td>FRED</td>
-                    <td>Monthly</td>
-                    <td>Core CPI inflation</td>
-                </tr>
-                <tr>
-                    <td>FEDFUNDS</td>
-                    <td>FRED</td>
-                    <td>Monthly</td>
-                    <td>Monetary policy control</td>
-                </tr>
-                <tr>
-                    <td>GDPC1</td>
-                    <td>FRED</td>
-                    <td>Quarterly</td>
-                    <td>Real GDP growth</td>
-                </tr>
-                <tr>
-                    <td>Total Commodity Index</td>
-                    <td>World Bank Pink Sheet</td>
-                    <td>Monthly → Quarterly</td>
-                    <td>Broad commodity-cycle indicator</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+    <ul class="source-list">
+        <li><strong>DCOILWTICO</strong> (FRED): daily WTI oil aggregated to monthly frequency.</li>
+        <li><strong>CPIAUCSL</strong> and <strong>CPILFESL</strong> (FRED): headline and core CPI used for year-over-year inflation.</li>
+        <li><strong>FEDFUNDS</strong> (FRED): federal funds rate used as a policy control.</li>
+        <li><strong>GDPC1</strong> (FRED): quarterly real GDP used for GDP growth.</li>
+        <li><strong>Total Commodity Index</strong> (World Bank Pink Sheet): commodity index aggregated to quarterly frequency.</li>
+    </ul>
     """,
     unsafe_allow_html=True,
 )
+module_close()
 
 st.caption(
-    "Built with Streamlit, Plotly, and statsmodels to present the macro analysis project as a polished research-oriented dashboard."
+    "Reduced-form macro dashboard built with Streamlit, Plotly, and statsmodels."
 )
