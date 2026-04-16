@@ -216,15 +216,8 @@ def inject_styles() -> None:
         }}
 
         .hero {{
-            padding: 0.05rem 0 0.15rem 0;
-            margin-bottom: 0.15rem;
-        }}
-
-        .hero-grid {{
-            display: grid;
-            grid-template-columns: minmax(0, 1.4fr) minmax(260px, 0.9fr);
-            gap: 1.1rem;
-            align-items: end;
+            padding: 0.1rem 0 0.45rem 0;
+            margin-bottom: 0.35rem;
         }}
 
         .hero-kicker {{
@@ -237,94 +230,33 @@ def inject_styles() -> None:
         }}
 
         .hero-title {{
-            font-size: 3.18rem;
+            font-size: 3.05rem;
             line-height: 0.98;
             font-weight: 740;
             letter-spacing: -0.03em;
-            margin: 0 0 0.3rem 0;
+            margin: 0 0 0.38rem 0;
             color: var(--ink);
-            max-width: 640px;
+            max-width: 760px;
         }}
 
         .hero-subtitle {{
-            font-size: 1.04rem;
-            line-height: 1.42;
+            font-size: 0.98rem;
+            line-height: 1.5;
             color: var(--muted);
-            max-width: 600px;
-            margin-bottom: 0.4rem;
+            max-width: 720px;
+            margin-bottom: 0.35rem;
         }}
 
-        .hero-core {{
-            color: var(--ink);
-            font-size: 1.5rem;
-            line-height: 1.22;
-            margin-top: 0.18rem;
-            max-width: 440px;
-            font-weight: 660;
-            letter-spacing: -0.02em;
-        }}
-
-        .hero-sidecar {{
-            border-radius: 4px;
-            background: rgba(0, 87, 168, 0.03);
-            padding: 0.45rem 0 0.15rem 0.95rem;
-            border-left: 2px solid rgba(0, 87, 168, 0.16);
-        }}
-
-        .hero-sidecar-title {{
-            font-size: 0.68rem;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-            color: var(--muted);
-            font-weight: 700;
-            margin-bottom: 0.25rem;
-        }}
-
-        .hero-sidecar-value {{
-            font-size: 2.95rem;
-            line-height: 1;
-            font-weight: 760;
-            color: var(--accent);
-            margin-bottom: 0.12rem;
-        }}
-
-        .hero-sidecar-copy {{
-            color: var(--muted);
-            font-size: 0.84rem;
-            line-height: 1.36;
-            max-width: 220px;
-        }}
-
-        .takeaway-strip {{
-            display: grid;
-            grid-template-columns: repeat(3, minmax(0, 1fr));
-            gap: 0.8rem;
-            margin-top: 0.8rem;
-            padding-top: 0.75rem;
+        .hero-lead {{
             border-top: 1px solid rgba(30, 37, 47, 0.12);
-        }}
-
-        .takeaway-item {{
-            display: grid;
-            grid-template-columns: 34px 1fr;
-            gap: 0.45rem;
-            align-items: start;
-        }}
-
-        .takeaway-index {{
-            color: rgba(0, 87, 168, 0.2);
-            font-size: 1.4rem;
-            font-weight: 700;
-            letter-spacing: 0.08em;
-            line-height: 1;
-            padding-top: 0.02rem;
-        }}
-
-        .takeaway-copy {{
+            padding-top: 0.8rem;
+            margin-top: 0.8rem;
+            max-width: 920px;
             color: var(--ink);
-            font-size: 0.92rem;
-            line-height: 1.34;
-            max-width: 290px;
+            font-size: 1.22rem;
+            line-height: 1.42;
+            font-weight: 620;
+            letter-spacing: -0.01em;
         }}
 
         .findings-list {{
@@ -367,12 +299,12 @@ def inject_styles() -> None:
         }}
 
         .section-wrap {{
-            margin-top: 1.35rem;
+            margin-top: 1.15rem;
             margin-bottom: 0.15rem;
         }}
 
         .module {{
-            margin-top: 1.15rem;
+            margin-top: 1.05rem;
             padding-top: 0.15rem;
             border-top: 1px solid rgba(30, 37, 47, 0.08);
             animation: moduleFadeIn 0.55s ease both;
@@ -711,15 +643,43 @@ def inject_styles() -> None:
             max-width: 520px;
         }}
 
+        .brief-box {{
+            border-top: 1px solid rgba(30, 37, 47, 0.12);
+            padding-top: 0.75rem;
+            max-width: 920px;
+        }}
+
+        .brief-title {{
+            color: var(--ink);
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            font-weight: 700;
+            margin-bottom: 0.42rem;
+        }}
+
+        .brief-list {{
+            margin: 0;
+            padding-left: 1.1rem;
+            color: var(--ink);
+        }}
+
+        .brief-list li {{
+            margin-bottom: 0.48rem;
+            line-height: 1.48;
+        }}
+
+        .interpretation {{
+            color: var(--muted);
+            font-size: 0.9rem;
+            line-height: 1.5;
+            max-width: 900px;
+            padding-top: 0.52rem;
+            border-top: 1px solid rgba(30, 37, 47, 0.08);
+            margin-top: 0.45rem;
+        }}
+
         @media (max-width: 900px) {{
-            .hero-grid {{
-                grid-template-columns: 1fr;
-            }}
-
-            .takeaway-strip {{
-                grid-template-columns: 1fr;
-            }}
-
             .comparison-grid {{
                 grid-template-columns: 1fr;
                 gap: 0.55rem;
@@ -1086,43 +1046,20 @@ commodity_model = frames["commodity_model"]
 latest_date = oil_inflation["DATE"].max().strftime("%b %Y")
 best_lag = int(lag_df.loc[lag_df["Correlation"].abs().idxmax(), "Lag (months)"])
 controlled_oil_coef = controlled_model.params["oil_price"]
+headline_gap = frames["headline_corr"] - frames["core_corr"]
+commodity_coef = commodity_model.params["commodity_growth"]
 
 
 st.markdown(
-    """
+    f"""
     <div class="hero">
-        <div class="hero-grid">
-            <div>
-                <div class="hero-kicker">Macroeconomic Research Dashboard</div>
-                <div class="hero-title">Global Commodity Macro Analysis</div>
-                <div class="hero-subtitle">
-                    FRED and World Bank data are used to study oil-inflation pass-through and the link between commodity cycles and output growth.
-                </div>
-                <div class="hero-core">
-                    Oil tracks headline inflation more closely than core, with the strongest pass-through appearing within one month.
-                </div>
-            </div>
-            <div class="hero-sidecar">
-                <div class="hero-sidecar-title">Primary read</div>
-                <div class="hero-sidecar-value">+0.030</div>
-                <div class="hero-sidecar-copy">
-                    Headline correlation exceeds core correlation by 0.030 in the current reduced-form specification.
-                </div>
-            </div>
+        <div class="hero-kicker">Macroeconomic Brief</div>
+        <div class="hero-title">Global Commodity Macro Analysis</div>
+        <div class="hero-subtitle">
+            This note uses local FRED and World Bank series to assess whether oil prices pass through to inflation and whether broader commodity cycles move with real activity. The emphasis is on economic interpretation rather than dashboard interaction.
         </div>
-        <div class="takeaway-strip">
-            <div class="takeaway-item">
-                <div class="takeaway-index">01</div>
-                <div class="takeaway-copy">Oil is more strongly linked to headline inflation than to core inflation.</div>
-            </div>
-            <div class="takeaway-item">
-                <div class="takeaway-index">02</div>
-                <div class="takeaway-copy">The strongest simple association appears at a 1-month lag rather than at longer horizons.</div>
-            </div>
-            <div class="takeaway-item">
-                <div class="takeaway-index">03</div>
-                <div class="takeaway-copy">The relationship weakens over time, but remains directionally positive after adding fed funds.</div>
-            </div>
+        <div class="hero-lead">
+            Main takeaway: oil prices are more closely aligned with headline inflation than with core inflation, the pass-through appears fastest at a {best_lag}-month horizon, and the relationship remains positive but unstable across time.
         </div>
     </div>
     """,
@@ -1130,153 +1067,92 @@ st.markdown(
 )
 
 section_header(
-    "Key Findings",
-    "Top-Line Readout",
-    "Top-line metrics computed directly from the project data and reduced-form models.",
+    "Question",
+    "Does oil move inflation?",
+    f"Evidence through {latest_date} suggests that oil is more closely linked to headline inflation than to core inflation, with the strongest pass-through appearing at a {best_lag}-month horizon.",
 )
 module_open()
-metric_cols = st.columns([1.75, 1.05], gap="large")
-with metric_cols[0]:
-    comparison_card(
-        "Oil and Inflation Correlation",
-        "Headline",
-        f"{frames['headline_corr']:.3f}",
-        "Core",
-        f"{frames['core_corr']:.3f}",
-        "Difference",
-        f"{(frames['headline_corr'] - frames['core_corr']):+.3f}",
-        "The headline link is modestly stronger and carries the main pass-through story.",
-    )
-with metric_cols[1]:
-    st.markdown(
-        f'<div class="appendix-block"><div class="appendix-title">Meta insight</div><div class="appendix-copy">Peak pass-through appears at <strong>{best_lag} month</strong>; the oil coefficient remains positive after policy control at <strong>{controlled_oil_coef:.4f}</strong>.</div></div>',
-        unsafe_allow_html=True,
-    )
-st.markdown(
-    f'<div class="module-context">FRED and World Bank data | Correlation, OLS, HAC | Sample through {latest_date}</div>',
-    unsafe_allow_html=True,
-)
-module_close()
-
-module_open()
-section_header(
-    "Oil and Inflation",
-    "Oil and Inflation Over Time",
-    "The time-series view anchors the project: oil and inflation rise together most clearly in the headline specification.",
-)
-inflation_choice = "Headline CPI"
-lag_months = 0
-rolling_view = "Both"
-
-inflation_choice = st.segmented_control(
-    "Inflation lens",
-    ["Headline CPI", "Core CPI"],
-    default="Headline CPI",
-    key="inflation_choice",
-)
-st.markdown(
-    f'<div class="module-context">Time-series view: {inflation_choice}</div>',
-    unsafe_allow_html=True,
-)
 chart_frame(
-    "Oil and Inflation",
-    "WTI oil is plotted against the selected inflation series in a dual-axis view.",
-    build_dual_axis_chart(oil_inflation, inflation_choice),
+    "Evidence 1: Oil and Headline Inflation Over Time",
+    "Monthly WTI oil prices and headline CPI inflation show the clearest co-movement in the sample.",
+    build_dual_axis_chart(oil_inflation, "Headline CPI"),
     key="dual_axis",
 )
-oil_notes = st.columns(2, gap="large")
-with oil_notes[0]:
-    st.markdown(
-        f'<div class="compact-note note-grid-card"><strong>Interpretation.</strong>&nbsp;Headline correlation ({frames["headline_corr"]:.3f}) remains above core ({frames["core_corr"]:.3f}), consistent with more direct energy pass-through.</div>',
-        unsafe_allow_html=True,
-    )
-with oil_notes[1]:
-    st.markdown(
-        f'<div class="compact-note note-grid-card"><strong>Controlled estimate.</strong>&nbsp;The oil coefficient stays positive at {controlled_oil_coef:.4f} after adding the federal funds rate.</div>',
-        unsafe_allow_html=True,
-    )
+st.markdown(
+    f'<div class="interpretation"><strong>Interpretation.</strong> Headline inflation correlates with oil at {frames["headline_corr"]:.3f}, above the {frames["core_corr"]:.3f} correlation for core inflation. Headline inflation carries the more policy-relevant pass-through signal.</div>',
+    unsafe_allow_html=True,
+)
 module_close()
 
 module_open()
 section_header(
-    "Headline vs Core Inflation",
-    "Oil-Inflation Cross-Section",
-    "The scatter view shows how the oil-inflation link changes when inflation is measured as headline versus core and when oil enters with lags.",
-)
-lag_months = st.segmented_control(
-    "Scatter lag",
-    [0, 1, 3, 6],
-    default=0,
-    format_func=lambda x: "Current" if x == 0 else f"{x}M",
-    key="lag_months",
-)
-st.markdown(
-    f'<div class="module-context">Scatter view: {inflation_choice} | {"Current oil price" if lag_months == 0 else f"{lag_months}-month lagged oil price"}</div>',
-    unsafe_allow_html=True,
+    "Evidence",
+    "Cross-section: headline responds more than core",
+    "A monthly scatter provides a simpler read on the same result: when inflation is measured as headline, the oil-inflation slope is more pronounced than when inflation is measured as core.",
 )
 chart_frame(
-    "Oil and CPI: Cross-Section Evidence",
-    "Each point is a monthly observation under the selected inflation lens and lag specification.",
-    build_scatter_chart(oil_inflation, inflation_choice, lag_months),
+    "Evidence 2: Oil and Headline Inflation, Monthly Cross-Section",
+    "Each point is a monthly observation; the fitted line summarizes the reduced-form relationship.",
+    build_scatter_chart(oil_inflation, "Headline CPI", 0),
     key="scatter",
 )
 st.markdown(
-    '<div class="compact-note"><strong>Model note.</strong> Oil coefficients are positive across specifications.</div>',
+    f'<div class="interpretation"><strong>Interpretation.</strong> The cross-section is not especially tight, but it remains directionally positive. The headline specification carries the more policy-relevant pass-through signal, which is why the note focuses on headline inflation.</div>',
     unsafe_allow_html=True,
 )
 module_close()
 
 module_open()
 section_header(
-    "Lag Response",
-    "How quickly the oil signal fades",
-    "Shorter lags carry more of the oil-headline inflation relationship than longer ones.",
+    "Mechanism",
+    "Pass-through appears quickly",
+    "Lag comparisons help distinguish whether oil shocks feed through rapidly or only after a longer delay.",
 )
 chart_frame(
-    "Lag Structure",
-    "The 1-, 3-, and 6-month lag comparison shows how the oil signal decays with time.",
+    "Evidence 3: Lag Structure",
+    "Correlations are compared across 1-, 3-, and 6-month oil lags against headline inflation.",
     build_lag_bar(lag_df),
     key="lagbar",
 )
 st.markdown(
-    '<div class="compact-note"><strong>Reading.</strong> The strongest simple link appears at 1 month, then weakens as the lag extends.</div>',
+    f'<div class="interpretation"><strong>Interpretation.</strong> The peak association occurs at {best_lag} month, with weaker relationships at longer lags. In reduced-form terms, the oil signal looks front-loaded rather than slow-moving.</div>',
     unsafe_allow_html=True,
 )
 module_close()
 
 module_open()
 section_header(
-    "Rolling Correlation",
-    "Positive, but unstable over time",
-    "A 12-month rolling view shows that the oil-inflation link changes materially across the sample.",
+    "Stability",
+    "The relationship is not constant over time",
+    "A rolling correlation tests whether the oil-inflation relationship is stable enough to treat as a single fixed coefficient.",
 )
 chart_frame(
-    "Rolling Correlation",
-    "Headline and core rolling correlations are shown together to emphasize instability rather than a fixed coefficient.",
+    "Evidence 4: Rolling Correlation",
+    "Headline and core correlations are measured over a moving 12-month window.",
     build_rolling_chart(oil_inflation, "Both"),
     key="rolling",
 )
 st.markdown(
-    '<div class="compact-note"><strong>Reading.</strong> Rolling correlations remain mostly positive, but the strength of the relationship is clearly time-varying rather than constant.</div>',
+    f'<div class="interpretation"><strong>Interpretation.</strong> Rolling correlations remain mostly positive, but the magnitude shifts substantially across the sample. That makes the headline result economically useful, but not structural: oil matters, yet the strength of pass-through depends on the macro environment.</div>',
     unsafe_allow_html=True,
 )
 module_close()
 
 module_open()
 section_header(
-    "Commodity Prices and GDP Growth",
-    "Broader Commodity Cycle Link",
-    "The secondary block asks whether broader commodity-price cycles move with real activity as well as with inflation.",
+    "Secondary Evidence",
+    "Commodity cycles and GDP growth",
+    "This is a supplementary result rather than the central narrative: broader commodity-price cycles also co-move with real activity, though more modestly than oil with headline inflation.",
 )
 
 chart_frame(
-    "Commodity Growth and GDP Growth",
-    "Quarterly commodity growth and GDP growth are plotted together to show broad macro-cycle co-movement.",
+    "Supplementary Evidence: Commodity Growth and GDP Growth",
+    "Quarterly commodity growth and GDP growth are plotted together to show broad cyclical co-movement.",
     build_commodity_cycle_chart(commodity_gdp),
     key="commodity_cycle",
 )
 st.markdown(
-    f'<div class="compact-note"><strong>Reading.</strong> The relationship is positive but modest: correlation {frames["commodity_corr"]:.3f}, regression coefficient {commodity_model.params["commodity_growth"]:.4f}.</div>',
+    f'<div class="interpretation"><strong>Interpretation.</strong> The link is positive but modest, with correlation {frames["commodity_corr"]:.3f} and a simple regression coefficient of {commodity_coef:.4f}. This supports the broader macro intuition that commodity upswings tend to coincide with stronger activity, while remaining clearly secondary to the oil-inflation result.</div>',
     unsafe_allow_html=True,
 )
 with st.expander("Show quarterly scatter", expanded=False):
@@ -1291,8 +1167,8 @@ module_close()
 module_open()
 section_header(
     "Method and Limits",
-    "Notes on construction and interpretation",
-    "These results are descriptive rather than causal and are intentionally kept reduced-form.",
+    "How to read this note",
+    "The estimates are descriptive rather than causal and should be read as reduced-form evidence.",
 )
 
 note_cols = st.columns([1.2, 0.9], gap="large")
@@ -1303,9 +1179,8 @@ with note_cols[0]:
             <div class="appendix-title">Construction</div>
             <ul class="source-list">
                 <li>Daily WTI oil prices are aggregated to monthly means before merging with CPI and fed funds data.</li>
-                <li>Headline and core inflation are computed as year-over-year changes in CPI.</li>
-                <li>Commodity growth and GDP growth are computed at quarterly frequency.</li>
-                <li>Lag comparisons focus on 1-, 3-, and 6-month oil lags, with HAC-robust errors in the controlled model.</li>
+                <li>Headline and core inflation are computed as year-over-year CPI changes, while commodity growth and GDP growth are measured at quarterly frequency.</li>
+                <li>Lag comparisons focus on 1-, 3-, and 6-month oil lags, with HAC-robust errors in the controlled regression.</li>
             </ul>
         </div>
         """,
@@ -1315,11 +1190,10 @@ with note_cols[1]:
     st.markdown(
         """
         <div class="appendix-block">
-            <div class="appendix-title">Interpretation limits</div>
+            <div class="appendix-title">Limits</div>
             <ul class="source-list">
                 <li>These results are associational rather than causal.</li>
-                <li>The regressions are intentionally reduced-form and omit broader macro controls.</li>
-                <li>Rolling correlations are descriptive and should not be read as structural estimates.</li>
+                <li>The regressions omit broader macro controls, and rolling correlations should not be read as structural estimates.</li>
             </ul>
         </div>
         """,
@@ -1349,5 +1223,5 @@ st.markdown(
 module_close()
 
 st.caption(
-    "Reduced-form macro dashboard built with Streamlit, Plotly, and statsmodels."
+    "Reduced-form macro briefing built with Streamlit, Plotly, and statsmodels."
 )
