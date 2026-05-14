@@ -9,7 +9,6 @@ The analysis focuses on two questions:
 
 The repository includes a reproducible notebook workflow, exported figures, and a lightweight Streamlit dashboard for interactive exploration.
 
----
 
 ## Project Overview
 
@@ -24,14 +23,12 @@ Main components include:
 - commodity growth vs GDP growth analysis
 - dashboard-based visualization and reporting
 
----
 
 ## Research Questions
 
 1. How strongly are oil prices associated with inflation?
 2. Do commodity-price cycles move with real GDP growth?
 
----
 
 ## Preview
 
@@ -63,7 +60,6 @@ Main components include:
 
 These results should be interpreted as reduced-form empirical relationships rather than causal estimates.
 
----
 
 ## Data Sources
 
@@ -76,7 +72,6 @@ The project uses:
 - FRED `GDPC1`: real GDP
 - World Bank Pink Sheet commodity indices
 
----
 
 ## Methods
 
@@ -90,7 +85,6 @@ The workflow includes:
 - monthly-to-quarterly aggregation
 - dashboard visualization using Streamlit
 
----
 
 ## Repository Structure
 
