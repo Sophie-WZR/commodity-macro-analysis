@@ -1,27 +1,37 @@
 # Global Commodity Macro Analysis
 
-A polished macroeconomic research project built with real-world data from **FRED** and the **World Bank** to analyze:
+This project analyzes relationships between commodity prices and macroeconomic indicators using public datasets from FRED and the World Bank.
 
-- **oil prices and inflation**
-- **commodity prices and GDP growth**
+The analysis focuses on two questions:
 
-The repository combines a reproducible notebook workflow, exported figures, and a lightweight Streamlit dashboard designed to present the project as a concise research briefing.
+- how oil prices relate to inflation
+- whether broader commodity-price cycles move with real GDP growth
 
-## Highlights
+The repository includes a reproducible notebook workflow, exported figures, and a lightweight Streamlit dashboard for interactive exploration.
 
-- Uses real macro and commodity datasets rather than toy data
-- Aligns daily, monthly, and quarterly time series in one workflow
-- Compares **headline vs core inflation** rather than treating inflation as one series
-- Adds **lag analysis** and **rolling correlation** to show time-varying relationships
-- Includes a simple **controlled regression** using the federal funds rate
-- Ships with a **dashboard showcase layer** for GitHub and portfolio presentation
+---
+
+## Project Overview
+
+The project combines multiple macroeconomic time series with different frequencies and reporting structures, including daily oil prices, monthly inflation data, and quarterly GDP data.
+
+Main components include:
+
+- oil price and inflation analysis
+- headline vs core inflation comparison
+- lag and rolling-correlation analysis
+- simple regression models with macro controls
+- commodity growth vs GDP growth analysis
+- dashboard-based visualization and reporting
+
+---
 
 ## Research Questions
 
-This project focuses on two core macro questions:
-
 1. How strongly are oil prices associated with inflation?
-2. Do broader commodity-price cycles move with real GDP growth?
+2. Do commodity-price cycles move with real GDP growth?
+
+---
 
 ## Preview
 
@@ -41,15 +51,19 @@ This project focuses on two core macro questions:
 
 ![Commodity Prices vs GDP Growth](outputs/figures/commodity_vs_gdp_growth_timeseries.png)
 
+---
+
 ## Main Findings
 
-- Oil prices are more strongly associated with **headline inflation** than with **core inflation**
-- The oil-inflation relationship is **time-varying**, not constant over the sample
-- The strongest oil-headline relationship appears at a **short lag horizon**
-- The oil coefficient remains positive after controlling for the **federal funds rate**
-- Commodity growth and GDP growth remain **positively associated** in the quarterly sample
+- Oil prices are more strongly associated with headline inflation than core inflation
+- The oil-inflation relationship changes over time rather than remaining constant
+- The strongest oil-headline relationship appears at shorter lag horizons
+- Oil prices remain positively associated with inflation after controlling for the federal funds rate
+- Commodity-price growth and GDP growth remain positively associated in the quarterly sample
 
-These should be interpreted as **reduced-form empirical relationships**, not causal estimates.
+These results should be interpreted as reduced-form empirical relationships rather than causal estimates.
+
+---
 
 ## Data Sources
 
@@ -60,36 +74,25 @@ The project uses:
 - FRED `CPILFESL`: core CPI
 - FRED `FEDFUNDS`: effective federal funds rate
 - FRED `GDPC1`: real GDP
-- World Bank Pink Sheet: monthly commodity price indices
+- World Bank Pink Sheet commodity indices
 
-## Analysis Structure
+---
 
-### 1. Oil Prices vs Inflation
+## Methods
 
-This section includes:
+The workflow includes:
 
-- monthly oil-price aggregation
-- headline CPI year-over-year inflation
-- core CPI year-over-year inflation
-- oil vs headline inflation comparison
-- oil vs core inflation comparison
-- lag analysis at 1, 3, and 6 months
-- 12-month rolling correlation
-- simple OLS regression
-- controlled regression with the federal funds rate
-
-### 2. Commodity Prices vs GDP Growth
-
-This section includes:
-
-- extraction of the World Bank Total Commodity Index
+- multi-frequency time-series alignment
+- inflation and growth-rate construction
+- lag correlation analysis
+- rolling-window correlation analysis
+- OLS regression analysis
 - monthly-to-quarterly aggregation
-- quarterly commodity growth
-- quarterly real GDP growth
-- correlation analysis
-- simple regression of GDP growth on commodity growth
+- dashboard visualization using Streamlit
 
-## Repository Layout
+---
+
+## Repository Structure
 
 ```text
 commodity-macro-analysis/
@@ -101,41 +104,3 @@ commodity-macro-analysis/
 │       └── macro_analysis.ipynb
 ├── requirements.txt
 └── README.md
-```
-
-## Run Locally
-
-Install dependencies:
-
-```bash
-pip install -r requirements.txt
-```
-
-Run the dashboard:
-
-```bash
-streamlit run app.py
-```
-
-Open the notebook:
-
-```bash
-jupyter notebook outputs/notebooks/macro_analysis.ipynb
-```
-
-## Project Deliverables
-
-- **Notebook analysis:** [`outputs/notebooks/macro_analysis.ipynb`](outputs/notebooks/macro_analysis.ipynb)
-- **Dashboard app:** [`app.py`](app.py)
-- **Exported figures:** [`outputs/figures`](outputs/figures)
-- **Application packaging notes:** [`outputs/project_packaging.md`](outputs/project_packaging.md)
-
-## Why This Project Matters
-
-This project is strongest as a **macro research portfolio piece**. It demonstrates the ability to:
-
-- work with public macroeconomic and commodity datasets
-- clean and align multi-frequency time series
-- engineer interpretable inflation and growth measures
-- present results through charts, summary tables, and a dashboard
-- connect empirical findings to macroeconomic intuition
